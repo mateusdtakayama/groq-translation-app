@@ -27,10 +27,11 @@ model = ChatGroq(model="gemma2-9b-it", groq_api_key=groq_api_key)
 
 
 PROMPT_TEMPLATE = """
-Translate the following text: {text} into {language} in this pattern:
-Original text: {text}
-Translated text: **translation**
-"""
+            Traduza o texto: {text} para a linguagem: {language}. Faça duas versões da tradução.
+            Escreva apenas a tradução e nada mais, siga esse padrão:
+            1. **formal**
+            2. **informal**
+            """
 prompt = ChatPromptTemplate.from_messages(
     [("system", PROMPT_TEMPLATE), ("user", "{text}")])
 
