@@ -18,6 +18,10 @@
  <a href="#colab">Collaborators</a>
 </p>
 
+<p align="center">
+    <img src="./pictures/img01.png" alt="Image Example" width="400px">
+</p>
+
 <h2 id="about">📌 About</h2>
 
 This repository contains two applications: 
