@@ -1,15 +1,27 @@
-"""
-The `os` module provides a way to interact with the operating system. 
-It includes functions for file and directory manipulation, environment 
-variables access, and path operations. Common functionalities include:
 
-- Accessing and modifying the file system (e.g., creating, deleting files).
-- Retrieving environment variables (e.g., `os.getenv()`).
-- Working with paths and directories (e.g., `os.path`).
-- Managing processes and system-specific parameters.
-
-This module is essential for applications that require OS-level interactions.
 """
+Este módulo define uma aplicação Streamlit para tradução de texto usando LangChain e a API GROQ.
+
+Função Principal:
+- `main()`: Configura a interface do usuário no Streamlit, incluindo um título, entradas na
+  barra lateral para a chave de API GROQ e a linguagem-alvo, e uma área de texto para
+  entrada de texto a ser traduzido. Lida com as interações do usuário, inicia o processo de
+  tradução usando LangChain e a API GROQ, e exibe o resultado da tradução ou mensagens
+  relevantes.
+
+Entradas na Barra Lateral:
+- GROQ API Key: Campo seguro para inserir a chave de API.
+- Language: Menu dropdown para selecionar o idioma de destino da tradução.
+
+Entradas Principais:
+- Text to translate: Área de texto onde o usuário insere o conteúdo a ser traduzido.
+
+Execução:
+Ao clicar no botão "Translate", a função valida as entradas, inicializa o modelo de tradução,
+prepara o prompt e exibe a tradução ao usuário. Em caso de ausência de dados ou erro, exibe
+mensagens adequadas para o usuário.
+"""
+
 import streamlit as st
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser

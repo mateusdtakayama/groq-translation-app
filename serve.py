@@ -1,15 +1,31 @@
 """
-The `os` module provides a way to interact with the operating system. 
-It includes functions for file and directory manipulation, environment 
-variables access, and path operations. Common functionalities include:
+Este módulo define uma API em FastAPI que usa LangChain para fornecer traduções formais e
+informais de texto em diferentes idiomas.
 
-- Accessing and modifying the file system (e.g., creating, deleting files).
-- Retrieving environment variables (e.g., `os.getenv()`).
-- Working with paths and directories (e.g., `os.path`).
-- Managing processes and system-specific parameters.
+Classes e Funções Principais:
+- `ChatGroq`: Interface do LangChain para o modelo "gemma2-9b-it", usando a API da Groq para
+  processamento de linguagem.
+- `ChatPromptTemplate`: Template para criação de prompts de tradução, com mensagens sistemáticas
+  para especificar o formato e o estilo das traduções.
+- `StrOutputParser`: Parser para extrair a string de saída do modelo, simplificando o
+  processamento da resposta.
+- `add_routes`: Função do LangServe que adiciona a rota FastAPI, permitindo acesso à cadeia
+  (chain) de processamento.
 
-This module is essential for applications that require OS-level interactions.
+Fluxo de Execução:
+1. `ChatPromptTemplate`: Define o prompt de tradução, especificando uma estrutura que instrui o
+   modelo a fornecer duas versões de tradução: formal e informal.
+2. `ChatGroq`: Executa o prompt usando o modelo "gemma2-9b-it".
+3. `StrOutputParser`: Processa a saída do modelo, retornando apenas a tradução.
+
+Variáveis de Ambiente:
+- `GROQ_API_KEY`: Chave API da Groq, carregada do arquivo `.env` para autenticação.
+
+Execução:
+Inicia o servidor FastAPI com uma rota na URL `/chain`, que recebe texto e idioma como parâmetros
+e retorna as traduções.
 """
+
 
 import os
 from fastapi import FastAPI
